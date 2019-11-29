@@ -1,6 +1,6 @@
-package genes.organs.wheels.issue
+package genes.organs.issue
 
-import genes.organs.wheels.buffers.RingBuffer
+import genes.organs.buffers.RingBuffer
 import chisel3._
 
 import scala.collection.mutable

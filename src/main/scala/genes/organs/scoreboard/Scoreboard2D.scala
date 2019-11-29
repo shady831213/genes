@@ -1,4 +1,4 @@
-package genes.organs.wheels.scoreboard
+package genes.organs.scoreboard
 
 import chisel3._
 

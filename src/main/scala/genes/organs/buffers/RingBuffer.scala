@@ -1,4 +1,4 @@
-package genes.organs.wheels.buffers
+package genes.organs.buffers
 
 import chisel3._
 import chisel3.util._

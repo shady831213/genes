@@ -4,7 +4,7 @@ import chisel3._
 import chisel3.util._
 import genes.example.design.GenesExample.config._
 import genes.organs.rocket.config._
-import genes.organs.wheels.scoreboard.Scoreboard
+import genes.organs.scoreboard.Scoreboard
 
 class RegFileSbCheckCh(regNum: Int, checkWidth: Int)(implicit p: Parameters) extends GEBundle {
   val rs = Vec(checkWidth, Valid(UInt(log2Ceil(regNum).W)))
