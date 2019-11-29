@@ -1,4 +1,4 @@
-package genes.backbone
+package genes.bones
 
 import chisel3._
 import chisel3.util._
@@ -6,7 +6,7 @@ import chisel3.util._
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
-protected[backbone] trait PipeDataBase {
+protected[bones] trait PipeDataBase {
   var pipeName: String = ""
   val datas = mutable.HashMap[Stageable[Data], Data]()
 
@@ -14,7 +14,7 @@ protected[backbone] trait PipeDataBase {
 
   protected def target: mutable.HashMap[Stageable[Data], Data]
 
-  protected[backbone] def =:=(that: PipeDataBase): Unit = {
+  protected[bones] def =:=(that: PipeDataBase): Unit = {
     for ((key, stageable) <- target) {
       if (that.datas.get(key).isDefined) {
         stageable := that.data(key)
@@ -22,7 +22,7 @@ protected[backbone] trait PipeDataBase {
     }
   }
 
-  protected[backbone] def copyDataFrom(that: PipeDataBase): Unit = {
+  protected[bones] def copyDataFrom(that: PipeDataBase): Unit = {
     require(datas.isEmpty)
     for (key <- that.target.keys) {
       data(key)
@@ -30,7 +30,7 @@ protected[backbone] trait PipeDataBase {
   }
 }
 
-protected[backbone] trait PipeData extends PipeDataBase {
+protected[bones] trait PipeData extends PipeDataBase {
   def data[T <: Data](key: Stageable[T]): T = {
     datas.getOrElseUpdate(key.asInstanceOf[Stageable[Data]],
       Wire(key()).suggestName(s"${pipeName}_${key.pipeName}")
@@ -41,7 +41,7 @@ protected[backbone] trait PipeData extends PipeDataBase {
 
 }
 
-protected[backbone] trait PipeDataWithDefault extends PipeDataBase {
+protected[bones] trait PipeDataWithDefault extends PipeDataBase {
   val datasDefault = mutable.HashMap[Stageable[Data], Data]()
 
   def data[T <: Data](key: Stageable[T]): T = {
@@ -58,7 +58,7 @@ protected[backbone] trait PipeDataWithDefault extends PipeDataBase {
 
 }
 
-protected[backbone] abstract class PipeControl extends Bundle with PipeDataBase {
+protected[bones] abstract class PipeControl extends Bundle with PipeDataBase {
   val valid = Bool()
   val ready = Bool()
   val flush = Bool()
@@ -73,19 +73,19 @@ protected[backbone] abstract class PipeControl extends Bundle with PipeDataBase 
     mask := true.B
   }
 
-  protected[backbone] def =~=(that: PipeControl): Unit = {
+  protected[bones] def =~=(that: PipeControl): Unit = {
     that.flush := flush
     that.ready := ready
     valid := that.valid
     mask := that.mask
   }
 
-  protected[backbone] def =|=(that: PipeControl): Unit = {
+  protected[bones] def =|=(that: PipeControl): Unit = {
     this =~= that
     this =:= that
   }
 
-  protected[backbone] def =||=(that: PipeControl): Unit = {
+  protected[bones] def =||=(that: PipeControl): Unit = {
     that.flush := flush
     that.ready := ready
     val validReg = RegInit(false.B).suggestName(s"${pipeName}_valid_r")
@@ -118,7 +118,7 @@ protected[backbone] abstract class PipeControl extends Bundle with PipeDataBase 
   }
 }
 
-protected[backbone] class PipeIORouter {
+protected[bones] class PipeIORouter {
   val arbitTable = mutable.HashMap[PipeControl, (Int => ArbiterIO[Bool], Seq[PipeControl])]()
   val connectTable = mutable.HashMap[PipeControl, PipeControl]()
   val reverseSelTable = mutable.HashMap[PipeControl, ArrayBuffer[(Bool, PipeControl)]]()
@@ -202,6 +202,6 @@ protected[backbone] class PipeIORouter {
   }
 }
 
-protected[backbone] class PipeIOWithDefault extends PipeControl with PipeDataWithDefault
+protected[bones] class PipeIOWithDefault extends PipeControl with PipeDataWithDefault
 
-protected[backbone] class PipeIO extends PipeControl with PipeData
+protected[bones] class PipeIO extends PipeControl with PipeData

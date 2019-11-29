@@ -1,4 +1,4 @@
-package genes.backbone
+package genes.bones
 
 import chisel3._
 import chisel3.util.{Arbiter, ArbiterIO}
@@ -28,10 +28,10 @@ abstract class PipeStage(val chId: Int) extends PipelineNameable {
     edges.head.enq
   }
 
-  protected[backbone] var fanins = mutable.ListBuffer[PipeEdge]()
-  protected[backbone] var fanouts = mutable.ListBuffer[PipeEdge]()
-  protected[backbone] var parent: PipeDAG = null.asInstanceOf[PipeDAG]
-  protected[backbone] var id: Int = 0
+  protected[bones] var fanins = mutable.ListBuffer[PipeEdge]()
+  protected[bones] var fanouts = mutable.ListBuffer[PipeEdge]()
+  protected[bones] var parent: PipeDAG = null.asInstanceOf[PipeDAG]
+  protected[bones] var id: Int = 0
 
   def index: Int = id
 
@@ -97,9 +97,9 @@ abstract class PipeStage(val chId: Int) extends PipelineNameable {
     inputRouter.broadCast(getEnq(stage), targets)
   }
 
-  protected[backbone] val starts = mutable.HashMap[Stageable[Data], Data]()
+  protected[bones] val starts = mutable.HashMap[Stageable[Data], Data]()
 
-  protected[backbone] def start[T <: Data](key: Stageable[T]): T = {
+  protected[bones] def start[T <: Data](key: Stageable[T]): T = {
     starts.getOrElseUpdate(key.asInstanceOf[Stageable[Data]],
       Wire(key()).suggestName(s"${pipeName}_${key.pipeName}_start")
     ).asInstanceOf[T]
@@ -122,7 +122,7 @@ abstract class PipeStage(val chId: Int) extends PipelineNameable {
 
   def deqRoute(): Unit
 
-  protected[backbone] def connectEnq(): Unit = {
+  protected[bones] def connectEnq(): Unit = {
     enqRoute()
     inputRouter.route()
     for ((key, stageable) <- starts) {
@@ -130,7 +130,7 @@ abstract class PipeStage(val chId: Int) extends PipelineNameable {
     }
   }
 
-  protected[backbone] def connectDeq(): Unit = {
+  protected[bones] def connectDeq(): Unit = {
     deqRoute()
     outputRouter.route()
   }
@@ -341,9 +341,9 @@ trait WithDependencyValid extends WithDependency {
 
 class StdStage(pipeName: String, chId: Int) extends SingleStageSingleChannelStage(pipeName, chId)
 
-protected[backbone] class dummyStage(chId: Int) extends StdStage(dummyStageMagicName, chId)
+protected[bones] class dummyStage(chId: Int) extends StdStage(dummyStageMagicName, chId)
 
-protected[backbone] class MultichannelSubStage(parentPipeName: String, pipeName: String, chId: Int, gen: Option[Int => SingleChannelStage]) extends MultiStageSingleChannelStage(pipeName) {
+protected[bones] class MultichannelSubStage(parentPipeName: String, pipeName: String, chId: Int, gen: Option[Int => SingleChannelStage]) extends MultiStageSingleChannelStage(pipeName) {
   def subPipe(): Unit = {
     gen match {
       case Some(g) => {

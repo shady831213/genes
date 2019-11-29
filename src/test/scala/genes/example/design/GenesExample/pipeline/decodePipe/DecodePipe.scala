@@ -1,7 +1,7 @@
 package genes.example.design.GenesExample.pipeline.decodePipe
 
 import genes.example.design.GenesExample.config._
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 
 class DecodePipeChannel(ch: Int) extends MultiStageSingleChannelStage(s"DecodePipeChannel_ch$ch", ch) {

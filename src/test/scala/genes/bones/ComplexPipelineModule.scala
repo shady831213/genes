@@ -1,4 +1,4 @@
-package genes.backbone
+package genes.bones
 
 import genes.organs.tester.testers.MultiThreadsTester
 import chisel3._

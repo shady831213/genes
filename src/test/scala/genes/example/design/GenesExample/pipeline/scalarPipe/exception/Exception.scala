@@ -7,7 +7,7 @@ import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.modules.csr.{Mstatus, Xcause, Xtvec}
 import genes.example.design.GenesExample.pipeline.scalarPipe._
 import genes.example.design.GenesExample.spec.{CSRs, Causes}
-import genes.backbone._
+import genes.bones._
 import genes.example.design.GenesExample.spec.CSRConstants._
 
 

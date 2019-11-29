@@ -2,7 +2,7 @@ package genes.example.design.GenesExample.config
 
 import chisel3._
 import chisel3.core.{MultiIOModule, RawModule}
-import genes.backbone._
+import genes.bones._
 import genes.organs.utils.MonitorIO
 import genes.organs.rocket.config._
 

@@ -5,7 +5,7 @@ import genes.example.design.GenesExample.config.{GEBundle, GEPlugin}
 import genes.example.design.GenesExample.pipeline._
 import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.spec.RegFileConstants._
-import genes.backbone._
+import genes.bones._
 
 class RegFileMonitorIO(implicit p: Parameters) extends GEBundle()(p) {
   val gp = UInt(xlen.W)

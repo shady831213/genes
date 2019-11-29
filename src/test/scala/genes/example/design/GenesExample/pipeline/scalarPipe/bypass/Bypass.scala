@@ -3,7 +3,7 @@ package genes.example.design.GenesExample.pipeline.scalarPipe.bypass
 import genes.example.design.GenesExample.pipeline._
 import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.pipeline.scalarPipe._
-import genes.backbone._
+import genes.bones._
 
 class Bypass(implicit p: Parameters, pipeline: Pipeline) extends ScalarPipePlugin {
   val exeBypassPort = Services().RegFileBypassPortService(ScalarPipe.Stages("execute"))

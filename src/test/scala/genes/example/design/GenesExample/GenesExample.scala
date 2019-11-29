@@ -9,7 +9,7 @@ import genes.example.design.GenesExample.pipeline.fetch._
 import genes.example.design.GenesExample.pipeline.regFile.RegFile
 import genes.example.design.GenesExample.pipeline.scalarPipe._
 import genes.example.design.GenesExample.verify._
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 import chisel3._
 

@@ -5,7 +5,7 @@ import java.security.Provider.Service
 import chisel3._
 import genes.example.design.GenesExample.modules.csr.Vtype
 import genes.example.design.GenesExample.modules.regFile.RegFileSb
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.pipeline.decodePipe._
 import genes.example.design.GenesExample.pipeline._

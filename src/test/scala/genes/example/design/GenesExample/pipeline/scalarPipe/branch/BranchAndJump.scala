@@ -6,7 +6,7 @@ import genes.organs.utils._
 import genes.example.design.GenesExample.spec.ScalarOpConstants._
 import chisel3._
 import genes.example.design.GenesExample.pipeline.scalarPipe._
-import genes.backbone._
+import genes.bones._
 
 class BranchAndJump(implicit p: Parameters, pipeline: Pipeline) extends ScalarPipePlugin{
   val nextPCClient = Services().NextPCService(ScalarPipe.Stages("memAccess"))

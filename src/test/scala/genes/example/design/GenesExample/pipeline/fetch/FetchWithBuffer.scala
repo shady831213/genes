@@ -1,7 +1,7 @@
 package genes.example.design.GenesExample.pipeline.fetch
 
 import chisel3._
-import genes.backbone._
+import genes.bones._
 import genes.example.design.GenesExample.modules.fetch._
 import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.pipeline._

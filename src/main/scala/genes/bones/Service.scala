@@ -1,4 +1,4 @@
-package genes.backbone
+package genes.bones
 
 import genes.organs.rocket.config.Parameters
 import chisel3._

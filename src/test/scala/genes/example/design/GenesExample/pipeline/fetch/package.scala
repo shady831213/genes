@@ -4,7 +4,7 @@ import chisel3._
 import chisel3.util._
 import genes.organs.rocket.config._
 import genes.example.design.GenesExample.config._
-import genes.backbone._
+import genes.bones._
 
 
 package object fetch {

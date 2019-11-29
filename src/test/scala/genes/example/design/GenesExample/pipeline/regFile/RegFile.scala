@@ -5,7 +5,7 @@ import genes.example.design.GenesExample.config.GEPlugin
 import genes.example.design.GenesExample.pipeline._
 import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.modules.regFile.RegFileLogic
-import genes.backbone._
+import genes.bones._
 
 class RegFile(implicit p: Parameters, pipeline: Pipeline) extends GEPlugin {
 

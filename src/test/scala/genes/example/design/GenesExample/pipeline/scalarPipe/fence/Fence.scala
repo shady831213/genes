@@ -3,7 +3,7 @@ package genes.example.design.GenesExample.pipeline.scalarPipe.fence
 import chisel3._
 import genes.example.design.GenesExample.pipeline.{Services, Stageables}
 import genes.example.design.GenesExample.pipeline.scalarPipe.ScalarPipePlugin
-import genes.backbone.Pipeline
+import genes.bones.Pipeline
 import genes.organs.rocket.config.Parameters
 
 class Fence(implicit p: Parameters, pipeline: Pipeline) extends ScalarPipePlugin {

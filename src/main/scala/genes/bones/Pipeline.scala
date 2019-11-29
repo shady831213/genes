@@ -1,4 +1,4 @@
-package genes.backbone
+package genes.bones
 
 import scala.collection.mutable.ArrayBuffer
 import chisel3._
@@ -34,12 +34,12 @@ trait Pipeline extends PipeDAG {
     filtered.head.asInstanceOf[T]
   }
 
-  protected [backbone] def PluginsBuildPass(): Unit = {
+  protected [bones] def PluginsBuildPass(): Unit = {
     plugins.foreach(_.setup())
     plugins.foreach(_.build())
   }
 
-  protected [backbone] def DAGBuildPass(): Unit = {
+  protected [bones] def DAGBuildPass(): Unit = {
     CheckStageablePass(this, Set[Stageable[Data]](), mutable.HashMap[Stageable[Data], Seq[PipeStage]]()) ::
       InsertStageablePass(this, Set[Stageable[Data]]()) ::
       ConnectPass(this) ::

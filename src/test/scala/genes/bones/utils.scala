@@ -1,4 +1,4 @@
-package genes.backbone
+package genes.bones
 
 import chisel3._
 

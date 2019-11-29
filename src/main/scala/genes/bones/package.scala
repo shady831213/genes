@@ -7,9 +7,9 @@ import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.collection.concurrent.TrieMap
 
-package object backbone {
+package object bones {
 
-  private[backbone] val dummyStageMagicName = "201001200x5f3759df"
+  private[bones] val dummyStageMagicName = "201001200x5f3759df"
 
   trait PipelineNameable {
     def pipeName: String = getClass.getName.split('.').last.replace("$", "")
@@ -33,10 +33,10 @@ package object backbone {
     }
   }
 
-  protected[backbone] def dfs(node: PipeStage, func: PipeStage => Boolean,
-                              revert: Boolean = false,
-                              visited: mutable.Set[PipeStage] = null,
-                              preOrder: Boolean = true): Boolean = {
+  protected[bones] def dfs(node: PipeStage, func: PipeStage => Boolean,
+                           revert: Boolean = false,
+                           visited: mutable.Set[PipeStage] = null,
+                           preOrder: Boolean = true): Boolean = {
     def _visited = if (visited != null) visited else mutable.Set[PipeStage]()
 
     if (preOrder) {
@@ -67,7 +67,7 @@ package object backbone {
     false
   }
 
-  protected[backbone] def bfs(node: PipeStage, func: PipeStage => Boolean, revert: Boolean = false, visited: mutable.Set[PipeStage] = null): Unit = {
+  protected[bones] def bfs(node: PipeStage, func: PipeStage => Boolean, revert: Boolean = false, visited: mutable.Set[PipeStage] = null): Unit = {
     val _visited = if (visited != null) visited else mutable.Set[PipeStage]()
     val q = ListBuffer[PipeStage]()
     if (visitNode(node)) return

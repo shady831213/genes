@@ -2,7 +2,7 @@ package genes.example.design.GenesExample.pipeline.dispatch
 
 import chisel3._
 import genes.example.design.GenesExample.config.GEPlugin
-import genes.backbone.Pipeline
+import genes.bones.Pipeline
 import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.pipeline._
 

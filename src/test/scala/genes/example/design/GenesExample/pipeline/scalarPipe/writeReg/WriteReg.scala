@@ -5,7 +5,7 @@ import genes.example.design.GenesExample.pipeline._
 import genes.organs.rocket.config.Parameters
 import genes.example.design.GenesExample.modules.regFile.RegFileLogic
 import genes.example.design.GenesExample.pipeline.scalarPipe._
-import genes.backbone._
+import genes.bones._
 
 class WriteReg(implicit p: Parameters, pipeline: Pipeline) extends ScalarPipePlugin {
   val writePort = Services().RegFileWritePortService()

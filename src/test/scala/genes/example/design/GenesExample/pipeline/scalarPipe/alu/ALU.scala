@@ -4,7 +4,7 @@ import chisel3._
 import chisel3.util._
 import genes.organs.rocket.config._
 import genes.example.design.GenesExample.modules.alu.{ALULogic, ALUSigs}
-import genes.backbone._
+import genes.bones._
 import genes.example.design.GenesExample.spec.ScalarOpConstants._
 import genes.organs.utils._
 import genes.example.design.GenesExample.pipeline._

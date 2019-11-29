@@ -1,4 +1,4 @@
-package genes.backbone
+package genes.bones
 
 import chisel3._
 
@@ -22,9 +22,9 @@ trait PipeDAG extends PipelineNameable {
   }
 
 
-  protected [backbone] def stages: Seq[PipeStage] = stagesTable.values.toSeq.sortWith {StagesSortFn}
+  protected [bones] def stages: Seq[PipeStage] = stagesTable.values.toSeq.sortWith {StagesSortFn}
 
-  protected [backbone] def stages(name: String): PipeStage = {
+  protected [bones] def stages(name: String): PipeStage = {
     val stage = stagesTable(name)
     require(stage.isInstanceOf[PipeStage])
     stage.asInstanceOf[PipeStage]
@@ -77,7 +77,7 @@ trait PipeDAG extends PipelineNameable {
     }
   }
 
-  private[backbone] def checkLoop(): Unit = {
+  private[bones] def checkLoop(): Unit = {
     val visited = mutable.Set[PipeStage]()
     for (stage <- stagesTable.values.toSeq.sortWith(_.fanins.length < _.fanins.length)) {
       val queue = mutable.ArrayBuffer[PipeStage]()
@@ -93,7 +93,7 @@ trait PipeDAG extends PipelineNameable {
   }
 
   //reverse topsort order
-  private[backbone] def indexing(): Unit = {
+  private[bones] def indexing(): Unit = {
     val visited = mutable.Set[PipeStage]()
     val queue = mutable.ArrayBuffer[PipeStage]()
     for (stage <- stagesTable.values.toSeq.sortWith(_.fanins.length < _.fanins.length)) {
@@ -138,7 +138,7 @@ sealed abstract class DataFlowAnalysisPass[T](dag: PipeDAG, defaultSet: Set[T], 
   }
 }
 
-private[backbone] case class ConnectPass(dag: PipeDAG) extends PipeDAGPass(dag) {
+private[bones] case class ConnectPass(dag: PipeDAG) extends PipeDAGPass(dag) {
   def apply(): this.type = {
     for (stage <- dag.stages) {
       stage.connectEnq()
@@ -155,7 +155,7 @@ private[backbone] case class ConnectPass(dag: PipeDAG) extends PipeDAGPass(dag) 
   }
 }
 
-private[backbone] case class CheckStageablePass(dag: PipeDAG, defaultFaninSet: Set[Stageable[Data]], StartTraceTable: mutable.HashMap[Stageable[Data], Seq[PipeStage]]) extends DataFlowAnalysisPass[Stageable[Data]](dag, defaultFaninSet, true) {
+private[bones] case class CheckStageablePass(dag: PipeDAG, defaultFaninSet: Set[Stageable[Data]], StartTraceTable: mutable.HashMap[Stageable[Data], Seq[PipeStage]]) extends DataFlowAnalysisPass[Stageable[Data]](dag, defaultFaninSet, true) {
   val avalabilityFaninSetTable = mutable.ArrayBuffer.fill(dag.stages.length)(Set[Stageable[Data]]())
   val avalabilityFanoutSetTable = mutable.ArrayBuffer.fill(dag.stages.length)(Set[Stageable[Data]]())
 
@@ -203,7 +203,7 @@ private[backbone] case class CheckStageablePass(dag: PipeDAG, defaultFaninSet: S
 }
 
 
-private[backbone] case class InsertStageablePass(dag: PipeDAG, defaultFanoutSet: Set[Stageable[Data]]) extends DataFlowAnalysisPass[Stageable[Data]](dag, defaultFanoutSet, false) {
+private[bones] case class InsertStageablePass(dag: PipeDAG, defaultFanoutSet: Set[Stageable[Data]]) extends DataFlowAnalysisPass[Stageable[Data]](dag, defaultFanoutSet, false) {
   val activeInputFaninSetTable = mutable.ArrayBuffer.fill(dag.stages.length)(Set[Stageable[Data]]())
   val activeOutputFaninSetTable = mutable.ArrayBuffer.fill(dag.stages.length)(Set[Stageable[Data]]())
   val activeFanoutSetTable = mutable.ArrayBuffer.fill(dag.stages.length)(Set[Stageable[Data]]())

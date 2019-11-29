@@ -5,7 +5,7 @@ import chisel3.util._
 import genes.example.design.GenesExample.config.GEParams
 import genes.example.design.GenesExample.modules.csr.{CSRFile, CSRMapping}
 import genes.example.design.GenesExample.spec.Causes
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 
 private[pipeline] class Services(implicit val p: Parameters) extends GEParams with WithImplicitWrapper[Parameters] {

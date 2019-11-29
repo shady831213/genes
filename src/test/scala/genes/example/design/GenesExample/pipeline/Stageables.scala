@@ -3,7 +3,7 @@ package genes.example.design.GenesExample.pipeline
 import chisel3._
 import chisel3.util._
 import genes.example.design.GenesExample.config._
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 
 private[pipeline] class Stageables(implicit val p: Parameters) extends GEParams with WithImplicitWrapper[Parameters] {

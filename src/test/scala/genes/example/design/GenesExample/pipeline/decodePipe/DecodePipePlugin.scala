@@ -4,7 +4,7 @@ import genes.example.design.GenesExample.config.GEPlugin
 import genes.example.design.GenesExample.pipeline.decodePipe.decode.Decoder
 import genes.example.design.GenesExample.pipeline.decodePipe.hazard.Hazard
 import genes.example.design.GenesExample.pipeline.decodePipe.readReg.ReadReg
-import genes.backbone.Pipeline
+import genes.bones.Pipeline
 import genes.organs.rocket.config.Parameters
 
 abstract class DecodePipePlugin(implicit p: Parameters, pipeline: Pipeline) extends GEPlugin {

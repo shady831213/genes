@@ -1,6 +1,6 @@
 package genes.example.design.GenesExample.pipeline.dispatch
 
-import genes.backbone._
+import genes.bones._
 
 class DispatchStage(pipeName: String) extends MultiChannelStdStage(pipeName, 2) {
   def enqRoute(): Unit = {

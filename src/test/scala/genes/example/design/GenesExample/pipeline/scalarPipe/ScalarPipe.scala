@@ -1,6 +1,6 @@
 package genes.example.design.GenesExample.pipeline.scalarPipe
 
-import genes.backbone._
+import genes.bones._
 
 class ScalarPipe extends MultiStageSingleChannelStage("ScalarPipe") with FiredPipe {
   def subPipe(): Unit = {

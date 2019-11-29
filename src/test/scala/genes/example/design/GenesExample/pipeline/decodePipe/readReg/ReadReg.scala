@@ -2,7 +2,7 @@ package genes.example.design.GenesExample.pipeline.decodePipe.readReg
 
 import genes.example.design.GenesExample.pipeline._
 import genes.example.design.GenesExample.pipeline.decodePipe._
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 
 class ReadReg(implicit p: Parameters, pipeline: Pipeline) extends DecodePipePlugin {

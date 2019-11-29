@@ -12,7 +12,7 @@ import genes.example.design.GenesExample.pipeline.scalarPipe.hazard.Hazard
 import genes.example.design.GenesExample.pipeline.scalarPipe.loadStore.LoadStore
 import genes.example.design.GenesExample.pipeline.scalarPipe.writeReg.WriteReg
 import genes.example.design.GenesExample.pipeline.scalarPipe.sysCall.SysCall
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 
 abstract class ScalarPipePlugin(implicit p: Parameters, pipeline: Pipeline) extends GEPlugin {

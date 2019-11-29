@@ -4,7 +4,7 @@ import chisel3._
 import genes.example.design.GenesExample.pipeline._
 import genes.example.design.GenesExample.pipeline.decodePipe._
 import genes.example.design.GenesExample.spec.Causes
-import genes.backbone._
+import genes.bones._
 import genes.organs.rocket.config.Parameters
 
 class Decoder(implicit p: Parameters, pipeline: Pipeline) extends DecodePipePlugin {
